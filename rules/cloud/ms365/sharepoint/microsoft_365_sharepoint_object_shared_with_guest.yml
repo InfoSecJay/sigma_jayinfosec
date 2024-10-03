@@ -12,10 +12,11 @@ tags:
 logsource:
     category: cloud
     product: m365
-    service: sharepoint
 detection:
     selection:
-        Workload: 'SharePoint'
+        Workload:
+            - 'SharePoint'
+            - 'OneDrive'
         Operation: 'SharingInvitationCreated'
         TargetUserOrGroupType: 'Guest'
     condition: selection

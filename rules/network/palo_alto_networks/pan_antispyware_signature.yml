@@ -1,5 +1,5 @@
 title: Palo Alto Networks Antispyware Signature
-id: 61e9cd7f-a551-4848-bff1-d222f5220d66
+id: 3101861a-dc1e-4e5c-bfa6-ad638311c47a
 status: test
 description: Detects a Palo Alto Networks antispyware threat signature.
 references:
@@ -9,8 +9,7 @@ author: Jay Tymchuk
 date: 2024/10/03
 modified: 2024/10/03
 tags:
-    - attack.initial_access
-    - attack.t1190
+    - attack.command_and_control
 logsource:
     product: palo_alto
     category: firewall
@@ -22,6 +21,7 @@ detection:
             - 'critical'
             - 'high'
             - 'medium'
+            - 'low'
     condition: selection
 fields:
     - type

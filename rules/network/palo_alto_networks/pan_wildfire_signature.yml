@@ -34,5 +34,5 @@ fields:
     - src
     - dst
 falsepositives:
-    - Possible false positive scenarios include, but are not limited to, vulnerability scanners and misconfigured systems.
+    - Vulnerability scanners and misconfigured systems.
 level: medium
