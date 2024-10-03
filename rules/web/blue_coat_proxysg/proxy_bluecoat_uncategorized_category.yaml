@@ -1,0 +1,23 @@
+title: Blue Coat Proxy Uncategorized Web Request
+id: c86b9612-28bf-4f4f-8035-95871c4eaa89
+status: test
+description: Detect sites that are not currently rated or that cannot be rated into any other category.
+references:
+    - https://sitereview.bluecoat.com/#/category-descriptions
+author: Jay Tymchuk
+date: 2022/11/23
+modified: 2023/08/14
+tags:
+    - attack.command_and_control
+    - attack.t1071.001
+logsource:
+    product: bluecoat_proxysg
+    category: web_proxy
+detection:
+    selection:
+        - category: 'uncategorized'
+    condition: selection
+fields:
+    - category
+falsepositives:
+    - Vulnerability scanners

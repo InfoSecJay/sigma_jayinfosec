@@ -1,0 +1,42 @@
+title: FortiGate UTM IPS Multiple Signatures from Private Network
+id: e25090c9-e376-4ee2-8d7f-8bb220a8d9e2
+status: experimental
+description: Detects attack signatures originating from a single source in the private network outbound to the public network.
+references:
+    - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/986892/sample-logs-by-log-type # Sample Logs
+tags:
+    - attack.execution
+    - attack.t1059
+author: '@JayInfoSec'
+date: 2023/11/20
+logsource:
+    category: firewall
+    product: fortigate
+detection:
+    selection:
+        type: 'utm'
+        subtype: 'ips'
+        logid|endswith:
+            - '16384'   # Attack detected by UDP/TCP signature
+            - '16385'   # Attack detected by ICMP signature
+            - '16386'   # Attack detected by other signature
+        severity:
+            - 'critical'
+            - 'high'
+            - 'medium'
+        srcip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    condition: selection | count(attack) by srcip > 5
+fields:
+    - user
+    - attack
+    - url
+    - srcip
+    - srccountry
+    - dstip
+falsepositives:
+    - Unknown.
+level: critical

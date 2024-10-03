@@ -1,0 +1,21 @@
+title: Microsoft Exchange Inbox Forwarding Rule Created
+id: aace8167-ca03-4b21-9401-cb15eeb1e361
+status: experimental
+description: Identifies when a new Inbox forwarding rule is created in Microsoft 365. Inbox rules process messages in the Inbox based on conditions and take actions. In this case, the rules will forward the emails to a defined address. Attackers can abuse Inbox Rules to intercept and exfiltrate email data without making organization-wide configuration changes or having the corresponding privileges.
+references:
+    - 
+author: 
+date: 2024-08-21
+tags:
+    - 
+logsource:
+    category: antivirus
+    product: aws
+    service: activitylogs
+detection:
+    selection:
+        
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

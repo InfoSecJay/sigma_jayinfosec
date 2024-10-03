@@ -1,0 +1,33 @@
+title: Cortex XDR Incident Detected
+id: c86b9612-28bf-4f4f-8035-95871c7eaa89
+status: test
+description: Palo Alto Cortex XDR incidents are stitched events from one or multiple alerts and should be investigated. 
+references:
+    - https://
+author: Jay Tymchuk
+date: 2022/11/23
+modified: 2022/11/23
+tags:
+    - attack.discovery
+    - attack.t1069.001
+logsource:
+    product: palo_alto_cortex_xdr
+    category: xdr
+detection:
+    selection:
+        - type: 'incident'
+        - subtype: 'ips'
+        - eventtype: 'signature''
+        - severity:
+            '9' # high
+            '8' # medium
+            '6' # low
+    condition: selection
+fields:
+    - type
+    - subtype
+    - severity
+    - signature
+falsepositives:
+    - False positives may vary depending on alert source and detection critiera. 
+level: high

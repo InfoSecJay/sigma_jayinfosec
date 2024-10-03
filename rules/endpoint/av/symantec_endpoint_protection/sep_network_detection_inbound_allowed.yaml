@@ -1,0 +1,31 @@
+title: SEP Network Detection Inbound Allowed Attack Signatures
+id: d270894f-9f6d-4673-a7a1-fe8582b22a8b
+status: experimental
+description: Detects Symantec Endpoint Protection host network detection event where the attack was allowed and originaties from the public network.
+references:
+    - https://icd-schema.symantec.com/type/8040
+    - https://www.broadcom.com/support/security-center/attacksignatures?
+author: Jay Tymchuk
+date: 2024/01/30
+modified: 2024/01/30
+tags:
+    - attack.initial_access
+    - attack.execution
+    - attack.command_and_control
+logsource:
+    category: antivirus
+    product: symantec_endpoint_protection
+detection:
+    selection:
+        event_id: '8040002'    # Host Network Detection: Allowed
+    filter_private_ip:
+        device_ip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    condition: selection and not filter_private_ip
+falsepositives:
+    - Filter any external vulnerability scanners.
+    - Filter any Attack signatures which are not relevant in the environment.
+level: high

@@ -1,0 +1,21 @@
+title: Microsoft Exchange Anti Phish Policy Deletion
+id: ef9e8d24-5d65-442b-b3d2-3c84b61987c6
+status: experimental
+description: Identifies the deletion of an anti-phishing policy in Microsoft 365. By default, Microsoft 365 includes built-in features that help protect users from phishing attacks. Anti-phishing polices increase this protection by refining settings to better detect and prevent attacks.
+references:
+    - 
+author: 
+date: 2024-08-21
+tags:
+    - 
+logsource:
+    category: antivirus
+    product: aws
+    service: activitylogs
+detection:
+    selection:
+        
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

@@ -1,0 +1,21 @@
+title: Microsoft Exchange Mail Access By Suspicious Clientappid
+id: a006b9ee-e6ac-402e-be3a-f6c0c11a861b
+status: experimental
+description: Identifies when a Microsoft 365 Mailbox is accessed by a ClientAppId that was observed for the first time during the last 20 days.
+references:
+    - 
+author: 
+date: 2024-08-21
+tags:
+    - 
+logsource:
+    category: antivirus
+    product: aws
+    service: activitylogs
+detection:
+    selection:
+        
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

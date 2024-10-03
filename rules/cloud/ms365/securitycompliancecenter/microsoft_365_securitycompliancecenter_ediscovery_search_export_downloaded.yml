@@ -1,0 +1,23 @@
+title: Microsoft 365 eDiscovery Search Export Downloaded
+id: 7f5c0633-3725-41ab-aa95-552115e64764
+status: experimental
+description: Detects instances where a user has initiated an eDiscovery search or exported a PST file in an Office 365 environment.
+references:
+    - https://docs.datadoghq.com/security/default_rules/microsoft-365-ediscovery-searchexportdownloaded/
+author: '@JayInfoSec'
+date: 2024-08-20
+tags:
+    - attack.collection
+logsource:
+    category: cloud
+    product: m365
+    service: securitycompliancecenter
+detection:
+    selection:
+        Workload: 'SecurityComplianceCenter'
+        Category: "ThreatManagement"
+        Operation: 'SearchExportDownloaded'
+    condition: selection
+falsepositives:
+    - Compliance content search exports may be executed for legitimate purposes, filter as needed.
+level: low

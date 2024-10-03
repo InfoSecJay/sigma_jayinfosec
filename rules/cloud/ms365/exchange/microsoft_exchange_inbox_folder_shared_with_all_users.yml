@@ -1,0 +1,21 @@
+title: Microsoft Exchange Inbox Folder Shared With All Users
+id: 0d701814-20d2-46f5-b8da-e4ecee3dca9b
+status: experimental
+description: Identifies when a new Inbox forwarding rule is created in Microsoft 365. Inbox rules process messages in the Inbox based on conditions and take actions. In this case, the rules will forward the emails to a defined address. Attackers can abuse Inbox Rules to intercept and exfiltrate email data without making organization-wide configuration changes or having the corresponding privileges.
+references:
+    - 
+author: 
+date: 2024-08-21
+tags:
+    - 
+logsource:
+    category: antivirus
+    product: aws
+    service: activitylogs
+detection:
+    selection:
+        
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

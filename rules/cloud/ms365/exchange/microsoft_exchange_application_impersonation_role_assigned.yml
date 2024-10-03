@@ -1,0 +1,21 @@
+title: Microsoft Exchange Application Impersonation Role Assigned
+id: 231c828e-e5aa-43cf-af2c-578a7b6e6379
+status: experimental
+description: Detects the assignment of the ApplicationImpersonation role in Office 365 to a user or application.
+references:
+    - 
+author: 
+date: 2024-08-21
+tags:
+    - 
+logsource:
+    category: antivirus
+    product: aws
+    service: activitylogs
+detection:
+    selection:
+        
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

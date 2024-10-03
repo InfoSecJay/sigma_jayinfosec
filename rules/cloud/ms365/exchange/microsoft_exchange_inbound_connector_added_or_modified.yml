@@ -1,0 +1,21 @@
+title: Microsoft Exchange Inbound Connector Added Or Modified
+id: 70bfc145-5fe6-4da7-a4d6-7f00ff1a95c1
+status: experimental
+description: Detect when a user adds or modifies a Microsoft 365 Inbound Connector. 
+references:
+    - 
+author: 
+date: 2024-08-21
+tags:
+    - 
+logsource:
+    category: antivirus
+    product: aws
+    service: activitylogs
+detection:
+    selection:
+        
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

@@ -1,0 +1,21 @@
+title: Microsoft Exchange Mailbox Audit Logging Bypass
+id: c433d113-09be-4656-995e-5e1e5f016a1e
+status: experimental
+description: Detects the occurrence of mailbox audit bypass associations. The mailbox audit is responsible for logging specified mailbox events (like accessing a folder or a message or permanently deleting a message). Attackers can abuse this allowlist mechanism to conceal actions taken, as the mailbox audit will log no activity done by the account.
+references:
+    - 
+author: 
+date: 2024-08-21
+tags:
+    - 
+logsource:
+    category: antivirus
+    product: aws
+    service: activitylogs
+detection:
+    selection:
+        
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

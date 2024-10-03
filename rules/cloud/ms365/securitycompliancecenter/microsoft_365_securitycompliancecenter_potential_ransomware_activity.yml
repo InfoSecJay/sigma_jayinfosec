@@ -1,0 +1,27 @@
+title: Microsoft 365 Potential Ransomware Activity
+id: b023708d-25dd-409d-b6ce-88362194c35f
+status: experimental
+description: Identifies when Microsoft Cloud App Security reports that a user has uploaded files to the cloud that might be infected with ransomware.
+references:
+    - https://www.elastic.co/guide/en/security/current/microsoft-365-potential-ransomware-activity.html
+    - https://learn.microsoft.com/en-us/defender-cloud-apps/anomaly-detection-policy
+    - https://learn.microsoft.com/en-us/defender-cloud-apps/policy-template-reference
+author: '@JayInfoSec'
+date: 2024-08-20
+tags:
+    - attack.impact
+    - attack.t1486
+logsource:
+    category: cloud
+    product: m365
+    service: securitycompliancecenter
+detection:
+    selection:
+        Workload: 'SecurityComplianceCenter'
+        Category: "ThreatManagement"
+        Operation: 'AlertTriggered'
+        eventName: 'Potential ransomware activity.'
+    condition: selection
+falsepositives:
+    - Unknown
+level: medium

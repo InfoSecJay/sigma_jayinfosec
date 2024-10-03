@@ -1,0 +1,31 @@
+title: Microsoft 365  Security And Compliance Alert Triggered
+id: 74c71d8f-4b49-499c-bdc6-13bc76f5f6e1
+status: experimental
+description: Detects alerts triggered by the Office 365 Security and Compliance Center, indicating potential threats or policy violations.
+references:
+    - https://research.splunk.com/cloud/5b367cdd-8dfc-49ac-a9b7-6406cf27f33e/
+    - https://learn.microsoft.com/en-us/purview/alert-policies?view=o365-worldwide
+    - https://learn.microsoft.com/en-us/purview/alert-policies
+author: '@JayInfoSec'
+date: 2024-08-20
+tags:
+    - attack.t1078.004
+logsource:
+    category: cloud
+    product: m365
+    service: securitycompliancecenter
+detection:
+    selection:
+        Workload: 'SecurityComplianceCenter'
+        Category: "ThreatManagement"
+        Operation: 'AlertTriggered'
+    filter:
+        eventName:
+            - 'Unusual volume of file deletion.'
+            - 'User restriced from sending email.'
+            - 'Potential ransomware activity.'
+            - 'Mass download by a single user.'
+    condition: selection and not filter
+falsepositives:
+    - O365 Security and Compliance may also generate false positives or trigger on legitimate behavior, filter as needed.
+level: medium

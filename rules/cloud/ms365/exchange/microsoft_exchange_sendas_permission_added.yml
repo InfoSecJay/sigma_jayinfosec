@@ -1,0 +1,21 @@
+title: Microsoft Exchange Sendas Permission Added
+id: 9063b510-20c7-4dc1-8ace-1c21f2376b3a
+status: experimental
+description: Detect when a user adds SendAs permissions which allows a user or group members to send messages that appear to come from the specified mailbox, mail contact, mail user, or group.
+references:
+    - 
+author: 
+date: 2024-08-21
+tags:
+    - 
+logsource:
+    category: antivirus
+    product: aws
+    service: activitylogs
+detection:
+    selection:
+        
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

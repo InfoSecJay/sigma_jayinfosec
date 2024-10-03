@@ -1,0 +1,34 @@
+title: FortiGate REST API Request
+id: e390da57-63d1-47c0-8ff4-2833a647d4c4
+status: experimental
+description: Detects any interaction with the FortiGates rest API.
+references:
+    - https://docs.fortinet.com/document/fortigate/7.4.1/fortios-log-message-reference/47301/47301-log-id-event-rest-api-ok
+    - https://docs.fortinet.com/document/fortigate/7.4.1/fortios-log-message-reference/47302/47302-log-id-event-rest-api-err
+    - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/986892/sample-logs-by-log-type # Sample log
+tags:
+    - attack.execution
+    - attack.t1059
+author: '@JayInfoSec'
+date: 2023/11/20
+logsource:
+    category: firewall
+    product: fortigate
+detection:
+    selection:
+        type: 'event'
+        subtype: 'rest-api'
+        logid|endswith:
+            - '47301'   # REST API request success
+            - '47302'   # REST API request failed
+    condition: selection
+fields:
+    - url
+    - status
+    - method
+    - ui
+    - user
+    - devid
+falsepositives:
+    - Unknown.
+level: informational

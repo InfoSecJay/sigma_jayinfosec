@@ -1,0 +1,27 @@
+title: Microsoft 365 eDiscovery Content Search Exported
+id: 0d60267b-319e-468e-ae9a-1441358de3ce
+status: experimental
+description: Detects when the results of a content search within the Office 365 Security and Compliance Center are exported.
+references:
+    - https://research.splunk.com/cloud/2ce9f31d-ab4f-4179-b2b7-c77a9652e1d8/
+    - https://learn.microsoft.com/en-us/purview/ediscovery-content-search-overview
+    - https://learn.microsoft.com/en-us/purview/ediscovery-keyword-queries-and-search-conditions
+    - https://learn.microsoft.com/en-us/purview/ediscovery-search-for-activities-in-the-audit-log
+author: '@JayInfoSec'
+date: 2024-08-20
+tags:
+    - attack.collection
+    - attack.t1114.002
+logsource:
+    category: cloud
+    product: m365
+    service: securitycompliancecenter
+detection:
+    selection:
+        Workload: 'SecurityComplianceCenter'
+        Category: 'ThreatManagement'
+        Operation: 'SearchExported'
+    condition: selection
+falsepositives:
+    - Compliance content searche exports may be executed for legitimate purposes, filter as needed.
+level: low

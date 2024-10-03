@@ -1,0 +1,26 @@
+title: Microsoft 365 eDisocvery Content Search Started
+id: c512d6ae-bfff-4d16-90ed-f9fcfcd76149
+status: experimental
+description: Detect when a user downloaded the results of a content search to their local computer.
+references:
+    - https://docs.datadoghq.com/security/default_rules/microsoft-365-ediscovery-searchexportdownloaded/
+    - OTHER
+author: '@JayInfoSec'
+date: 2024-08-20
+tags:
+    - attack.collection
+logsource:
+    category: cloud
+    product: m365
+    service: securitycompliancecenter
+detection:
+    selection:
+        Workload: 'SecurityComplianceCenter'
+        Category: "ThreatManagement"
+        Operation:
+            - 'New-ComplianceSearch'
+            - 'SearchStarted'
+    condition: selection
+falsepositives:
+    - Unknown
+level: low

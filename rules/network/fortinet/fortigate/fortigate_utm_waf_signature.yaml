@@ -1,0 +1,47 @@
+title: FortiGate UTM WAF Signature
+id: bcf088cb-959d-40e4-921a-1d660f423952
+status: experimental
+references:
+    - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/952611/icap
+tags:
+    - attack.execution  # example MITRE ATT&CK category
+    - attack.t1059      # example MITRE ATT&CK technique id
+author: '@JayInfoSec'
+date: 2023/11/20
+logsource:
+    category: firewall
+    product: fortigate
+detection:
+    selection:
+        type: 'utm'
+        subtype: 'waf'
+        eventtype: 'waf-signature'
+        logid|endswith:
+            - '30248'   # Web application firewall blocked application by signature
+            - '30249'   # Web application firewall passed application by signature
+        severity:
+            - 'critical'
+            - 'high'
+            - 'medium'
+        srcip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    filter_dst:
+        dstip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    condition: selection and not filter_*
+fields:
+    - user
+    - attack
+    - url
+    - srcip
+    - srccountry
+    - dstip
+falsepositives:
+    - Unknown.
+level: medium

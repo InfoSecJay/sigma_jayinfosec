@@ -1,0 +1,21 @@
+title: Microsoft Exchange Anti Phish Rule Modification
+id: 3837c511-b50e-45cc-b9dd-6e742f26de40
+status: experimental
+description: Identifies the modification of an anti-phishing rule in Microsoft 365. By default, Microsoft 365 includes built-in features that help protect users from phishing attacks. Anti-phishing rules increase this protection by refining settings to better detect and prevent attacks.
+references:
+    - 
+author: 
+date: 2024-08-21
+tags:
+    - 
+logsource:
+    category: antivirus
+    product: aws
+    service: activitylogs
+detection:
+    selection:
+        
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

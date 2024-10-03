@@ -1,0 +1,21 @@
+title: Microsoft Exchange Multiple Mailboxes Accessed Via Api
+id: 59af1840-1bdb-4fed-b766-5d2184a945ce
+status: experimental
+description: Identifies when a new role is assigned to a management group in Microsoft 365. An adversary may attempt to add a role in order to maintain persistence in an environment.
+references:
+    - 
+author: 
+date: 2024-08-21
+tags:
+    - 
+logsource:
+    category: antivirus
+    product: aws
+    service: activitylogs
+detection:
+    selection:
+        
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

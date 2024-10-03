@@ -1,0 +1,21 @@
+title: Microsoft Exchange Suspicious Mailbox Right Delegation
+id: 98053792-9dbc-46b8-b162-e275e18fc7d8
+status: experimental
+description: Identifies the assignment of rights to access content from another mailbox. An adversary may use the compromised account to send messages to other accounts in the network of the target organization while creating inbox rules, so messages can evade spam/phishing detection mechanisms.
+references:
+    - 
+author: 
+date: 2024-08-21
+tags:
+    - 
+logsource:
+    category: antivirus
+    product: aws
+    service: activitylogs
+detection:
+    selection:
+        
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

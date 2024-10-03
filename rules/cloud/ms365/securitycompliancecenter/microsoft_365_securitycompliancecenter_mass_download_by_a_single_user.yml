@@ -1,0 +1,26 @@
+title: Microsoft 365 Mass Download By A Single User
+id: 63b38450-097d-4512-a9ec-a147daf84b9b
+status: experimental
+description: Identifies when Microsoft Cloud App Security reports that a single user performs more than 50 downloads within 1 minute.
+references:
+    - https://www.elastic.co/guide/en/security/current/microsoft-365-mass-download-by-a-single-user.html
+    - https://learn.microsoft.com/en-us/defender-cloud-apps/anomaly-detection-policy
+    - https://learn.microsoft.com/en-us/defender-cloud-apps/policy-template-reference
+author: '@JayInfoSec'
+date: 2024-08-20
+tags:
+    - attack.exfiltration
+logsource:
+    category: cloud
+    product: m365
+    service: securitycompliancecenter
+detection:
+    selection:
+        Workload: 'SecurityComplianceCenter'
+        Category: "ThreatManagement"
+        Operation: 'AlertTriggered'
+        eventName: 'Mass download by a single user.'
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical

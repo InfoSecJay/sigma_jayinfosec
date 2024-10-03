@@ -1,0 +1,27 @@
+title: Microsoft 365 eDiscovery Contents Search Created
+id: da90b12e-ab60-44ca-9220-9e407b89510c
+status: experimental
+description: Detects when a content search is initiated within the Office 365 Security and Compliance Center.
+references:
+    - https://research.splunk.com/cloud/f4cabbc7-c19a-4e41-8be5-98daeaccbb50/
+    - https://learn.microsoft.com/en-us/purview/ediscovery-content-search-overview
+    - https://learn.microsoft.com/en-us/purview/ediscovery-keyword-queries-and-search-conditions
+    - https://learn.microsoft.com/en-us/purview/ediscovery-search-for-activities-in-the-audit-log
+author: '@JayInfoSec'
+date: 2024-08-20
+tags:
+    - attack.collection
+    - attack.t1114.002
+logsource:
+    category: cloud
+    product: m365
+    service: securitycompliancecenter
+detection:
+    selection:
+        Workload: 'SecurityComplianceCenter'
+        Category: "ThreatManagement"
+        Operation: 'SearchCreated'
+    condition: selection
+falsepositives:
+    - Compliance content searches may be executed for legitimate purposes, filter as needed.
+level: low

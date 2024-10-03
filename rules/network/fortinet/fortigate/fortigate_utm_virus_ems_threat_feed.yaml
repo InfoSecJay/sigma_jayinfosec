@@ -1,0 +1,51 @@
+title: FortiGate UTM Virus EMS-Threat-Feed Indicator
+id: bf9b33e9-79b0-4bd4-a3fd-55f824fa36c7
+status: experimental
+description: Detects attack signatures originating from the private network outbound to the public network.
+references:
+    - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/986892/sample-logs-by-log-type # Sample Logs
+    - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/127369/malware-threat-feed-from-ems
+tags:
+    - attack.execution  # example MITRE ATT&CK category
+    - attack.t1059      # example MITRE ATT&CK technique id
+author: '@JayInfoSec'
+date: 2023/11/20
+logsource:
+    category: firewall
+    product: fortigate
+detection:
+    selection:
+        type: 'utm'
+        subtype: 'virus'
+        eventtype: 'ems-threat-feed'
+        logid|endswith:
+            - '8216'   # File reported infected by EMS threat feed (warning)
+            - '8217'   # File reported infected by EMS threat feed (notice)
+            - '8218'   # MIME data reported infected by EMS threat feed (warning)
+            - '8219'   # MIME data reported infected by EMS threat feed (notice)
+        severity:
+            - 'critical'
+            - 'high'
+            - 'medium'
+        srcip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    filter_dst:
+        dstip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    condition: selection and not filter_*
+fields:
+    - user
+    - attack
+    - url
+    - srcip
+    - srccountry
+    - dstip
+falsepositives:
+    - Unknown.
+level: medium
