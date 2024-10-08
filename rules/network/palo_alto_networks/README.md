@@ -1,5 +1,5 @@
 ### Goal
-The primary goal of this ADS is to establish a comprehensive framework for detecting and alerting on threat events such as vulnerabilities, spyware, viruses, and wildfire incidents. This will ensure timely identification and response to security threats, minimizing potential impacts on organizational assets.
+The primary goal of this ADS is to establish a comprehensive framework for detecting and alerting on threat events such as vulnerabilities, spyware, viruses, and wildfire incidents from Palo Alto Networks next-generation firewalls THREAT log events. This will ensure timely identification and response to security threats, minimizing potential impacts on organizational assets.
 
 ### Categorization
 These attempts are categorized as:
@@ -15,7 +15,7 @@ The stragey will function as follows:
 
 ### Technical Context
 
-tbd
+
 
 ### Blind Spots and Assumptions
 
@@ -48,8 +48,19 @@ Validation can occur for this ADS by performing the following execution on any W
 
 The priority is set to medium under all conditions.
 
+### Detection Rules
+
+The following detection rules are in scope for this alerting and detection strategy:
+- Palo Alto Networks Multiple Threat Signatures from Public Network
+- Palo Alto Networks Multiple Threat Signatures from Private Network
+- Palo Alto Networks Vulnerability Signature from Private Network
+- Palo Alto Networks Vulnerability Signature Allowed from Public
+- Palo Alto Networks Antivirus Signature
+- Palo Alto Networks Antispyware Signature
+- Palo Alto Networks WildFire Signature
+- Palo Alto Networks Zone Protection Signature
+
 ### Response
 
 In the event that this alert fires, the following response procedures are recommended:
 
-tbd
