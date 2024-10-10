@@ -1,0 +1,36 @@
+title: Palo Alto Networks Antivirus Signature
+id: 2487a965-3504-426f-90b5-79180e979b81
+status: test
+description: Detects a Palo Alto Networks antivirus threat signature.
+references:
+    - https://threatvault.paloaltonetworks.com/
+    - https://www.paloaltonetworks.com/blog/2015/09/network-ips-tuning-guide/
+author: Jay Tymchuk
+date: 2024/10/03
+modified: 2024/10/03
+tags:
+    - attack.command-and-control
+logsource:
+    product: palo_alto
+    category: firewall
+detection:
+    selection:
+        type: 'THREAT'
+        subtype: 'virus'
+        severity:
+            - 'critical'
+            - 'high'
+            - 'medium'
+            - 'low'
+    condition: selection
+fields:
+    - type
+    - subtype
+    - severity
+    - threatid
+    - misc
+    - src
+    - dst
+falsepositives:
+    - Possible false positive scenarios include, but are not limited to, vulnerability scanners and misconfigured systems.
+level: medium

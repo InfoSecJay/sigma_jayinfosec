@@ -1,0 +1,28 @@
+title: SEP Process Detection - Behavioral Signature
+id: 91a1d1ab-ddee-44a7-8b64-591ea7425759
+status: experimental
+description: Detects Symantec Endpoint Protection host process detection event indicating a behavioral signature.
+references:
+    - https://icd-schema.symantec.com/type/8027
+    - https://www.broadcom.com/support/security-center/attacksignatures?
+author: Jay Tymchuk
+date: 2024/01/30
+tags:
+    - attack.initial_access
+logsource:
+    category: antivirus
+    product: symantec_endpoint_protection
+detection:
+    selection:
+        event_id|startswith: '8027'
+        type: 'Behavioral'
+        device_ip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    condition: selection
+falsepositives:
+    - Filter any external vulnerability scanners.
+    - Filter any Attack signatures which are not relevant in the environment.
+level: medium

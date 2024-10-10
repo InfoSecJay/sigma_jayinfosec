@@ -1,0 +1,64 @@
+title: FortiGate UTM Virus Outbreak-Prevention
+id: e8487c28-e718-4692-b2e6-a0464a20b05c
+status: experimental
+description: Detects attack signatures originating from the private network outbound to the public network.
+references:
+    - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/986892/sample-logs-by-log-type # Sample Logs
+tags:
+    - attack.execution  # example MITRE ATT&CK category
+    - attack.t1059      # example MITRE ATT&CK technique id
+author: '@JayInfoSec'
+date: 2023/11/20
+logsource:
+    category: firewall
+    product: fortigate
+detection:
+    selection:
+        type: 'utm'
+        subtype: 'virus'
+        eventtype: 'outbreak-prevention'
+        logid|endswith:
+            - '8202'    # File reported infected by Outbreak Prevention (warning)
+            - '8203'    # File reported infected by Outbreak Prevention (notice)
+            - '8204'    # MIME data reported infected by Outbreak Prevention (warning)
+            - '8205'    # MIME data reported infected by Outbreak Prevention (notice)
+        severity:
+            - 'critical'
+            - 'high'
+            - 'medium'
+        srcip|startswith: # filter in private srcip
+            - '10.'
+            - '192.168.'
+            - '172.16.'
+            - '172.17.'
+            - '172.18.'
+            - '172.19.'
+            - '172.20.'
+            - '172.21.'
+            - '172.22.'
+            - '172.23.'
+            - '172.24.'
+            - '172.25.'
+            - '172.26.'
+            - '172.27.'
+            - '172.28.'
+            - '172.29.'
+            - '172.30.'
+            - '172.31.'
+    filter_src:
+        dstip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    condition: selection and not filter_*
+fields:
+    - user
+    - attack
+    - url
+    - srcip
+    - srccountry
+    - dstip
+falsepositives:
+    - Unknown.
+level: medium

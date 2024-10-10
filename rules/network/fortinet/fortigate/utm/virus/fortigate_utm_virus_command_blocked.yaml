@@ -1,0 +1,47 @@
+title: FortiGate UTM Virus Command-Blocked
+id: 417cd00c-b42b-4b6b-9975-b7f9b4942a46
+status: experimental
+description: Detects attack signatures originating from the private network outbound to the public network.
+references:
+    - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/986892/sample-logs-by-log-type # Sample Logs
+tags:
+    - attack.execution  # example MITRE ATT&CK category
+    - attack.t1059      # example MITRE ATT&CK technique id
+author: '@JayInfoSec'
+date: 2023/11/20
+logsource:
+    category: firewall
+    product: fortigate
+detection:
+    selection:
+        type: 'utm'
+        subtype: 'virus'
+        eventtype: 'command-blocked'
+        logid|endswith:
+            - '8452'   # FortiGate unit blocked a virus command
+        severity:
+            - 'critical'
+            - 'high'
+            - 'medium'
+        srcip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    filter_src:
+        dstip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    condition: selection and not filter_*
+fields:
+    - user
+    - attack
+    - url
+    - srcip
+    - srccountry
+    - dstip
+falsepositives:
+    - Unknown.
+level: medium

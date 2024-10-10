@@ -1,0 +1,28 @@
+title: SEP Network Detection - PEP Signature
+id: 0b50eb7d-5aff-4eb9-9970-f4fd1a768db2
+status: experimental
+description: Detects Symantec Endpoint Protection host network detection event indicating an 'PEP Enhance ASLR Protection' signature.
+references:
+    - https://icd-schema.symantec.com/type/8040
+    - https://www.broadcom.com/support/security-center/attacksignatures?
+author: Jay Tymchuk
+date: 2024/01/30
+tags:
+    - attack.initial_access
+logsource:
+    category: antivirus
+    product: symantec_endpoint_protection
+detection:
+    selection:
+        event_id|startswith: '8040'
+        threat|startswith: 'PEP'
+        device_ip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    condition: selection
+falsepositives:
+    - Filter any external vulnerability scanners.
+    - Filter any Attack signatures which are not relevant in the environment.
+level: medium
