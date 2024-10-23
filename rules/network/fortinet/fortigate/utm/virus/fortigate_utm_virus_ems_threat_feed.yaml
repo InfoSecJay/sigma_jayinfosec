@@ -1,4 +1,4 @@
-title: FortiGate UTM Virus EMS-Threat-Feed Indicator
+title: FortiGate UTM Virus EMS Threat Feed Indicator
 id: bf9b33e9-79b0-4bd4-a3fd-55f824fa36c7
 status: experimental
 description: Detects virus signatures from FortiClient Endpoint Management Server (EMS) threat feeds.

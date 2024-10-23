@@ -1,12 +1,12 @@
 title: FortiGate UTM Virus MIMEFragmented Signature
 id: 66167fe2-194a-462b-afe9-53d2c73eda4f
 status: experimental
-description: Detects attack signatures originating from the private network outbound to the public network.
+description: Detects FortiGate NGFW UTM Virus security profiles blocking a MIME file containing a virus.
 references:
     - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/986892/sample-logs-by-log-type # Sample Logs
 tags:
-    - attack.execution  # example MITRE ATT&CK category
-    - attack.t1059      # example MITRE ATT&CK technique id
+    - attack.execution
+    - attack.t1059
 author: '@JayInfoSec'
 date: 2023/11/20
 logsource:
@@ -29,13 +29,7 @@ detection:
             - '10.0.0.0/8'
             - '172.16.0.0/12'
             - '192.168.0.0/16'
-    filter_src:
-        dstip|cidr:
-            - '127.0.0.0/8'
-            - '10.0.0.0/8'
-            - '172.16.0.0/12'
-            - '192.168.0.0/16'
-    condition: selection and not filter_*
+    condition: selection
 fields:
     - user
     - attack

@@ -1,7 +1,7 @@
 title: FortiGate UTM IPS Malicious URL
 id: 68e06d2a-f167-4c2d-b467-197f1fd5fff9
 status: experimental
-description: Detects UTM IPS malicious-url activity originating from the private network, which is a FortiGate feature that uses a local malicious URL database on the FortiGate to detect drive-by exploits, such as adware that allows automatically downloading of a malicious file when a page loads without the users detection, and the dtabase contians all malicious URLs active in the last one month and all the drive-by exploit URLs actiuve in the last three months, where there are over 1 million URLs in the database at any given time.
+description: Detects FortiGate NGFW UTM IPS malicious-url activity originating from the private network, which is a FortiGate feature that uses a local malicious URL database on the FortiGate to detect drive-by exploits, such as adware that allows automatically downloading of a malicious file when a page loads without the users detection, and the dtabase contians all malicious URLs active in the last one month and all the drive-by exploit URLs actiuve in the last three months, where there are over 1 million URLs in the database at any given time.
 references:
     - https://docs.fortinet.com/document/fortigate/7.4.1/fortios-log-message-reference/16399/16399-logid-attack-malicious-url
     - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/419589/ips-configuration-options#Malicious
