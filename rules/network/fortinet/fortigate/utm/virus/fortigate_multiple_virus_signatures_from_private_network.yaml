@@ -24,8 +24,7 @@ detection:
             - '127.0.0.0/8'
             - '10.0.0.0/8'
             - '172.16.0.0/12'
-            - '19    - url
-2.168.0.0/16'
+            - '192.168.0.0/16'
     condition: selection and not filter | count(attack) by srcip > 5
 fields:
     - user
