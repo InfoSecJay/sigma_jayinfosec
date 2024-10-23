@@ -9,9 +9,9 @@ date: 2024-08-21
 tags:
     - 
 logsource:
-    category: antivirus
-    product: aws
-    service: activitylogs
+    category: cloud
+    product: m365
+    service: exchange
 detection:
     selection:
         

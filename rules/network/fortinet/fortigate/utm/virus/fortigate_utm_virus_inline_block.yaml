@@ -1,7 +1,7 @@
-title: FortiGate Inline-Block UTM Virus Signature
+title: FortiGate UTM Virus Inline Block Detection
 id: 7386734f-ab85-4c83-9fed-f98eb947537e
 status: experimental
-description: Detects attack signatures originating from the private network outbound to the public network.
+description: Detects FortiGate NGFW UTM Virus security profile detecting an infected file via in-line block.
 references:
     - https://docs.fortinet.com/document/fortigate/7.4.1/fortios-log-message-reference/422/virus # log reference
     - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/986892/sample-logs-by-log-type # Sample Logs
@@ -33,13 +33,7 @@ detection:
             - '10.0.0.0/8'
             - '172.16.0.0/12'
             - '192.168.0.0/16'
-    filter_src:
-        dstip|cidr:
-            - '127.0.0.0/8'
-            - '10.0.0.0/8'
-            - '172.16.0.0/12'
-            - '192.168.0.0/16'
-    condition: selection and not filter_*
+    condition: selection
 fields:
     - user
     - attack

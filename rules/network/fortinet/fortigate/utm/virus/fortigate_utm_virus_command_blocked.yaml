@@ -1,4 +1,4 @@
-title: FortiGate UTM Virus Command-Blocked
+title: FortiGate UTM Virus Command Blocked
 id: 417cd00c-b42b-4b6b-9975-b7f9b4942a46
 status: experimental
 description: Detects attack signatures originating from the private network outbound to the public network.
