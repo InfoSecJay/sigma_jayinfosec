@@ -1,4 +1,4 @@
-title: FortiGate UTM Internet Content Adaptaion Protocol (ICAP) Infection
+title: FortiGate UTM ICAP Infection Detected
 id: b8cf15ce-22c3-4bc6-9139-35f30c6c5088
 status: experimental
 description: Detects FortiGate UTM Internet Content Adapation Protocol (ICAP) traffic blocked indicating a potential infection.

@@ -1,4 +1,4 @@
-title: Palo Alto Networks Zone Protection Signature
+title: Palo Alto Networks DoS and Zone Protection Signature
 id: fffcf62a-6b41-4c0f-8f1e-6f1d4c822eb5
 status: test
 description: Detects a Palo Alto Networks Zone Protection threat signature.

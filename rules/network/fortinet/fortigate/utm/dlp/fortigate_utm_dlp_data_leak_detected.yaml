@@ -1,12 +1,15 @@
-title: FortiGate UTM DLP Outbound Data Leak Detected
+title: FortiGate UTM DLP Data Leak Detected
 id: c7b980d4-714a-49ae-9bdf-8c524709198d
 status: experimental
-description: Detects potential data leaks via FortiGates UTM DLP content analysis mechanisims which uses methods like keyword matches, regular expressions, and internal functions to recognize content that matches a companys DLP policy.
+description: Detects FortiGates NGFW UTM DLP content analysis mechanisims which uses methods like keyword matches, regular expressions, and internal functions to recognize content that matches a companys DLP policy which may indicate potential data leaks.
 references:
     - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/986892/sample-logs-by-log-type # Sample Logs
+    - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/892638/dlp-examples
     - https://www.fortinet.com/resources/cyberglossary/dlp
     - https://docs.fortinet.com/document/fortigate/7.4.2/administration-guide/153498/data-loss-prevention
     - https://community.fortinet.com/t5/FortiGate/Technical-Tip-Configure-Data-Leak-Prevention-DLP/ta-p/196796
+    - https://docs.fortinet.com/document/fortigate/7.4.1/fortios-log-message-reference/24576/24576-log-id-dlp-warn
+    - https://docs.fortinet.com/document/fortigate/7.4.1/fortios-log-message-reference/24577/24577-log-id-dlp-notif
 tags:
     - attack.exfiltration
 author: '@JayInfoSec'
@@ -14,7 +17,7 @@ date: 2023/11/20
 modified: 2024/01/22
 logsource:
     category: firewall
-    product: fortigate    # FortiOS 7.4
+    product: fortigate
 detection:
     selection:
         type: 'utm'
@@ -26,18 +29,7 @@ detection:
             - 'critical'
             - 'high'
             - 'medium'
-        srcip|cidr:
-            - '127.0.0.0/8'
-            - '10.0.0.0/8'
-            - '172.16.0.0/12'
-            - '192.168.0.0/16'
-    filter_dst:
-        dstip|cidr:
-            - '127.0.0.0/8'
-            - '10.0.0.0/8'
-            - '172.16.0.0/12'
-            - '192.168.0.0/16'
-    condition: selection and not filter_*
+    condition: selection
 fields:
     - srcip
     - dstip

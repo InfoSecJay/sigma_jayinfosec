@@ -1,7 +1,7 @@
 title: FortiGate REST API Request
-id: e390da57-63d1-47c0-8ff4-2833a647d4c4
+id: de3412c6-452b-4ad7-b199-219d138ed698
 status: experimental
-description: Detects any interaction with the FortiGates rest API.
+description: Detects any successful or failed interaction with the FortiGates rest API.
 references:
     - https://docs.fortinet.com/document/fortigate/7.4.1/fortios-log-message-reference/47301/47301-log-id-event-rest-api-ok
     - https://docs.fortinet.com/document/fortigate/7.4.1/fortios-log-message-reference/47302/47302-log-id-event-rest-api-err

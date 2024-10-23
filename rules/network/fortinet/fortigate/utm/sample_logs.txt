@@ -1,0 +1,25 @@
+# UTM Anomaly
+
+date=2020-11-20 time=14:38:39 eventtime=1605911919824184594 tz="-0800" logid="0720018433" type="utm" subtype="anomaly" eventtype="anomaly" level="alert" vd="root" severity="critical" srcip=192.168.2.205 srccountry="Reserved" dstip=192.168.2.50 srcintf="port1" srcintfrole="undefined" sessionid=0 action="clear_session" proto=1 service="PING" count=1307 attack="icmp_flood" icmpid="0x2195" icmptype="0x08" icmpcode="0x00" attackid=16777316 policyid=1 policytype="DoS-policy" ref="http://www.fortinet.com/ids/VID16777316" msg="anomaly: icmp_flood, 31 > threshold 30, repeats 28 times" crscore=50 craction=4096 crlevel="critical"
+
+
+# UTM DLP
+
+date=2022-10-26 time=11:25:01 eventtime=1666808700281057923 tz="-0700" logid="0954024576" type="utm" subtype="dlp" eventtype="dlp" level="warning" vd="root" filteridx=1 rulename="1" dlpextra="builtin-patterns;sensor-case1" filtertype="sensor" filtercat="file" severity="medium" policyid=1 poluuid="891a526a-51cd-51ed-577a-6505bec88af9" policytype="policy" sessionid=3905 epoch=2143297701 eventid=0 srcip=10.1.100.11 srcport=40370 srccountry="Reserved" srcintf="port2" srcintfrole="undefined" srcuuid="502d2c8e-51cd-51ed-a24e-a091f4ff6fed" dstip=172.16.200.55 dstport=443 dstcountry="Reserved" dstintf="port1" dstintfrole="undefined" dstuuid="502d2c8e-51cd-51ed-a24e-a091f4ff6fed" proto=6 service="HTTPS" filetype="msoffice" direction="outgoing" action="block" hostname="172.16.200.55" url="https://172.16.200.55/card.doc" agent="curl/7.83.1" httpmethod="POST" filename="card.doc" filesize=108 profile="profile-case1"
+
+
+# UTM DNS
+
+# UTM ICAP
+
+
+# UTM IPS
+
+
+# UTM VIRUS
+
+
+# UTM WAF
+
+
+# UTM WEB FILTER
