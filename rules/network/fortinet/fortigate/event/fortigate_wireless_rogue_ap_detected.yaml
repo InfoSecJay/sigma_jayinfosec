@@ -1,5 +1,5 @@
 title: FortiGate Wireless Rogue AP Detected
-id: e390da57-63d1-47c0-8ff4-2833a647d4c4
+id: d64abc6c-75ea-4af3-a2ba-81857ab759a0
 status: experimental
 description: Detects potential unauthorized rogue access point activity from FortiGate event logs.
 references:

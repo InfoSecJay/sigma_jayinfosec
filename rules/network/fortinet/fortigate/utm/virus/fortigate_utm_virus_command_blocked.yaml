@@ -44,4 +44,4 @@ fields:
     - dstip
 falsepositives:
     - Unknown.
-level: medium
+level: informational

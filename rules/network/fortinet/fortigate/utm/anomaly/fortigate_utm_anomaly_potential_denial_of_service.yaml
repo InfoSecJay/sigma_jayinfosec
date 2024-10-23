@@ -13,11 +13,11 @@ references:
 tags:
     - attack.impact
     - attack.t1498
-author: 'Jay Tymchuk (@JayInfoSec)'
+author: '@JayInfoSec'
 date: 2023/11/20
 logsource:
     category: firewall
-    product: fortigate    # FortiOS 7.4
+    product: fortigate
 detection:
     selection:
         type: 'utm'
@@ -26,10 +26,6 @@ detection:
             - '18432'   # Attack detected by UCP/TCP anomaly
             - '18433'   # Attack detected by ICMP anomaly
             - '18434'   # Attack detected by other anomaly
-        severity:
-            - 'critical'
-            - 'high'
-            - 'medium'
         action: 'detected'
     condition: selection
 fields:
@@ -37,7 +33,6 @@ fields:
     - srcip
     - dstip
     - attack
-    - count
     - service
     - msg
 falsepositives:

@@ -82,6 +82,10 @@ The following detection rules are in scope for this alerting and detection strat
 - Palo Alto Networks WildFire Signature
 - Palo Alto Networks Zone Protection Signature
 
+If the detection platform can support it, the following rules are additionally recommended:
+- First Time Observed Palo Alto Networks Threat Signature
+- Highly Relevant Signatures
+
 ## Response
 
 In the event that this alert fires, the following response procedures are recommended:
