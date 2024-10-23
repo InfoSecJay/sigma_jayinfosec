@@ -1,4 +1,4 @@
-title: Microsoft 365 Sharepoint Object Shared With Guest
+title: Microsoft 365 OneDrive or Sharepoint Object Shared With Guest
 id: 6792c5fd-92df-4159-ab06-ccd716a26afb
 status: experimental
 description: Detect when a user shares a Microsoft 365 Sharepoint document with a guest.
