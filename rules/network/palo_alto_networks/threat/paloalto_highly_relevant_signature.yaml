@@ -13,8 +13,9 @@ tags:
 author: '@JayInfoSec'
 date: 2023/11/20
 logsource:
-    category: firewall
-    product: palo_alto
+    category: appliance
+    product: paloalto
+    service: threat
 detection:
     selection:
         type: 'utm'

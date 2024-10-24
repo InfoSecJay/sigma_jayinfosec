@@ -1,7 +1,7 @@
-title: Palo Alto Networks Antivirus Signature
-id: 2487a965-3504-426f-90b5-79180e979b81
+title: Palo Alto Networks DoS and Zone Protection Signature
+id: fffcf62a-6b41-4c0f-8f1e-6f1d4c822eb5
 status: test
-description: Detects a Palo Alto Networks antivirus threat signature.
+description: Detects a Palo Alto Networks Zone Protection threat signature.
 references:
     - https://threatvault.paloaltonetworks.com/
     - https://www.paloaltonetworks.com/blog/2015/09/network-ips-tuning-guide/
@@ -13,17 +13,17 @@ author: Jay Tymchuk
 date: 2024/10/03
 modified: 2024/10/03
 tags:
-    - attack.command-and-control
+    - attack.execution
 logsource:
-    product: palo_alto
-    category: firewall
+    category: appliance
+    product: paloalto
+    service: threat
 detection:
     selection:
         type: 'THREAT'
         subtype:
-            - 'virus'
-            - 'ml-virus'
-            - 'wildfire-virus'
+            - 'flood'
+            - 'scan'
         severity:
             - 'critical'
             - 'high'
@@ -59,5 +59,5 @@ fields:
     - src
     - dst
 falsepositives:
-    - Possible false positive scenarios include, but are not limited to, vulnerability scanners and misconfigured systems.
+    - Vulnerability scanners and misconfigured systems.
 level: medium

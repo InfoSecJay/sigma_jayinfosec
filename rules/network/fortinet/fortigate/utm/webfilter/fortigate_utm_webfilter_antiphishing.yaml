@@ -11,8 +11,9 @@ tags:
 author: '@JayInfoSec'
 date: 2023/11/20
 logsource:
-    category: firewall
+    category: appliance
     product: fortigate
+    service: utm
 detection:
     selection:
         type: 'utm'
@@ -40,5 +41,5 @@ fields:
     - url
     - user
 falsepositives:
-    - Unknown.
+    - Unknown
 level: medium

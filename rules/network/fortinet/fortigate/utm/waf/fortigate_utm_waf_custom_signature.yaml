@@ -1,17 +1,19 @@
 title: FortiGate UTM WAF Custom Signature
 id: 3dd2b50f-1419-4738-bbff-ee2a1faac17a
 status: experimental
-description: Detects attack signatures originating from the private network outbound to the public network.
+description: Detects a FortiGate NGFW UTM web application firewall (WAF) security profile blocked or allowed an application by custom signature.
 references:
-    - https://docs.fortinet.com/document/fortigate/7.4.1/administration-guide/952611/icap
+    - https://docs.fortinet.com/document/fortigate/7.6.0/administration-guide/233445/blocking-applications-with-custom-signatures
+    - https://docs.fortinet.com/document/fortigate/6.2.2/fortios-log-message-reference/517224/30251-logid-waf-custom-signature-block
+    - https://docs.fortinet.com/document/fortigate/6.2.2/fortios-log-message-reference/686130/30252-logid-waf-custom-signature-pass
 tags:
-    - attack.execution  # example MITRE ATT&CK category
-    - attack.t1059      # example MITRE ATT&CK technique id
+    - attack.execution
 author: '@JayInfoSec'
 date: 2023/11/20
 logsource:
-    category: firewall
+    category: appliance
     product: fortigate
+    service: utm
 detection:
     selection:
         type: 'utm'
@@ -37,12 +39,14 @@ detection:
             - '192.168.0.0/16'
     condition: selection and not filter_*
 fields:
-    - user
-    - attack
+    - action
+    - appcat
+    - app
+    - hostname
+    - agent
     - url
     - srcip
-    - srccountry
     - dstip
 falsepositives:
-    - Unknown.
+    - Unknown
 level: medium

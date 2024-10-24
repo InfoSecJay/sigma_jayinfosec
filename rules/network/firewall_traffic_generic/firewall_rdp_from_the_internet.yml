@@ -1,0 +1,37 @@
+title: Firewall Rdp From The Internet
+id: b36216fe-9e7a-4f26-b05b-2505aa7db886
+status: experimental
+description: Detects traffic on the Remote Desktop Protocol (RDP) destination port 3389 from the public network.
+references:
+    - https://www.elastic.co/guide/en/security/current/rdp-remote-desktop-protocol-from-the-internet.html
+author: '@JayInfoSec'
+date: 2024-10-23
+tags:
+    - attack.command-and-control
+    - attack.lateral-movement
+    - attack.t1021
+    - attack.t1190
+logsource:
+    category: network
+    service: firewall
+detection:
+    selection:
+        destination.port: 3389
+        destination.ip|cidr:
+            - '10.0.0.0/8 or'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    filter_main_local_ranges:
+        source.ip|cidr:
+            - '127.0.0.0/8'
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+            - '169.254.0.0/16'
+            - '::1/128'  # IPv6 loopback
+            - 'fe80::/10'  # IPv6 link-local addresses
+            - 'fc00::/7'  # IPv6 private addresses
+    condition: selection and not 1 of filter_main_*
+falsepositives:
+    - Unknown
+level: medium

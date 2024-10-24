@@ -16,8 +16,9 @@ author: '@JayInfoSec'
 date: 2023/11/20
 modified: 2024/01/22
 logsource:
-    category: firewall
+    category: appliance
     product: fortigate
+    service: utm
 detection:
     selection:
         type: 'utm'

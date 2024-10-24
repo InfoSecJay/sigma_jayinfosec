@@ -1,8 +1,7 @@
-title: Palo Alto Networks Vulnerability Signature from Private Network
-name: pan_threat_event_private_network
-id: 61e9cd7f-a551-4848-bff1-d222f5220d66
+title: Palo Alto Networks Antivirus Signature
+id: 2487a965-3504-426f-90b5-79180e979b81
 status: test
-description: Detects a Palo Alto Networks vulnerability threat signature from the private network.
+description: Detects a Palo Alto Networks antivirus threat signature.
 references:
     - https://threatvault.paloaltonetworks.com/
     - https://www.paloaltonetworks.com/blog/2015/09/network-ips-tuning-guide/
@@ -14,48 +13,52 @@ author: Jay Tymchuk
 date: 2024/10/03
 modified: 2024/10/03
 tags:
-    - attack.lateral-movement
-    - attack.t1210
+    - attack.command-and-control
 logsource:
-    product: palo_alto
-    category: firewall
+    category: appliance
+    product: paloalto
+    service: threat
 detection:
     selection:
         type: 'THREAT'
-        subtype: 'vulnerability'
+        subtype:
+            - 'virus'
+            - 'ml-virus'
+            - 'wildfire-virus'
         severity:
             - 'critical'
             - 'high'
             - 'medium'
+            - 'low'
+    filter_blocked:
+        action:
+            - 'deny'
+            - 'drop'
+            - 'reset-client'
+            - 'reset-server'
+            - 'reset-both'
+            - 'block-url'
+            - 'block-ip'
+            - 'random-drop'
+            - 'sinkhole'
+            - 'block'
+    filter_private:
         srcip|cidr:
             - '127.0.0.0/8'
             - '10.0.0.0/8'
             - '172.16.0.0/12'
             - '192.168.0.0/16'
-    condition: selection
+    condition: selection and not (filter_blocked and not filter_private)
 fields:
     - type
     - subtype
-    - severity
+    - thr_category
     - threatid
     - misc
+    - severity
+    - action
     - src
     - dst
 falsepositives:
-    - Vulnerability scanners and misconfigured systems.
+    - Possible false positive scenarios include, but are not limited to, vulnerability scanners and misconfigured systems.
 level: medium
----
-title: Palo Alto Networks Multiple Threat Signatures from Private Source
-correlation:
-    type: value_count
-    rules:
-        - pan_threat_event_private_network
-    group-by:
-        - src
-    timespan: 10m
-    condition:
-        gte: 10
-        field: threatid
-    level: high
-    falsepositives:
-        - Vulnerability scanners and misconfigured systems.

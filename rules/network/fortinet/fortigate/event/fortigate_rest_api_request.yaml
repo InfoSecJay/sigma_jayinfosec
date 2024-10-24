@@ -12,8 +12,9 @@ tags:
 author: '@JayInfoSec'
 date: 2023/11/20
 logsource:
-    category: firewall
+    category: appliance
     product: fortigate
+    service: event
 detection:
     selection:
         type: 'event'
@@ -30,5 +31,5 @@ fields:
     - user
     - devid
 falsepositives:
-    - Unknown.
+    - Unknown
 level: informational
