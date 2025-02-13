@@ -4,7 +4,7 @@ status: experimental
 description: Detects instances where a user has initiated an eDiscovery search or exported a PST file in an Office 365 environment.
 references:
     - https://research.splunk.com/cloud/5f694cc4-a678-4a60-9410-bffca1b647dc/
-author: '@JayInfoSec'
+author: Jay Tymchuk '@JayInfoSec'
 date: 2024-08-20
 tags:
     - attack.collection

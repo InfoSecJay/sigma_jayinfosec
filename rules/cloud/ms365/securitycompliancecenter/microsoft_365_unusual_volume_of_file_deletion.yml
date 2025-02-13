@@ -6,7 +6,7 @@ references:
     - https://www.elastic.co/guide/en/security/current/microsoft-365-unusual-volume-of-file-deletion.html)
     - https://learn.microsoft.com/en-us/defender-cloud-apps/anomaly-detection-policy)
     - https://learn.microsoft.com/en-us/defender-cloud-apps/policy-template-reference)
-author: '@JayInfoSec'
+author: Jay Tymchuk '@JayInfoSec'
 date: 2024-08-20
 tags:
     - attack.impact

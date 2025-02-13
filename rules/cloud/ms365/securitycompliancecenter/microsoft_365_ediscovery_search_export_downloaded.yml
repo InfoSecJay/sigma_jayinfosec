@@ -4,7 +4,7 @@ status: experimental
 description: Detects instances where a user has initiated an eDiscovery search or exported a PST file in an Office 365 environment.
 references:
     - https://docs.datadoghq.com/security/default_rules/microsoft-365-ediscovery-searchexportdownloaded/
-author: '@JayInfoSec'
+author: Jay Tymchuk '@JayInfoSec'
 date: 2024-08-20
 tags:
     - attack.collection

@@ -4,8 +4,7 @@ status: experimental
 description: Detect when a user downloaded the results of a content search to their local computer.
 references:
     - https://docs.datadoghq.com/security/default_rules/microsoft-365-ediscovery-searchexportdownloaded/
-    - OTHER
-author: '@JayInfoSec'
+author: Jay Tymchuk '@JayInfoSec'
 date: 2024-08-20
 tags:
     - attack.collection
