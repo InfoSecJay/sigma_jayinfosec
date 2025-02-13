@@ -1,0 +1,39 @@
+title: Prisma Cloud Attack Path Alert
+id: 71a5c3d0-fa7d-48b2-a18c-8d653fbe836c
+status: unsupported
+description: |
+    Detects Prisma Cloud Attack Path alerts which are of critical, high, medium or low severity.
+    Attack Path policies are out-of-the-box policies that are enabled by default. These policies identify the confluence of issues that increase the likelihood of a security breach and are based on relationships such as, overly permissive identities, permissions, network exposure, infrastructure misconfiguration, and vulnerabilities that would enable an attacker to target your application. Prisma Cloud helps you identify attack paths and presents them in a graph view, offering valuable security context to protect against high-risk threats, which often requires you to take immediate action.
+references:
+    - https://docs.prismacloud.io/en/enterprise-edition/content-collections/alerts/alerts
+    - https://docs.prismacloud.io/en/enterprise-edition/content-collections/governance/attack-path-policies
+    - https://www.paloaltonetworks.com/blog/cloud-security/disrupt-attack-paths-prioritize-security/
+author: Jay Tymchuk '@JayInfoSec'
+date: 2025-02-13
+tags:
+    - attack.initial-access
+    - attack.execution
+    - attack.persistence
+    - attack.defense-evasion
+    - attack.credential-access
+    - attack.discovery
+    - attack.lateral-movement
+    - attack.collection
+    - attack.exfiltration
+    - attack.impact
+logsource:
+    category: cloud
+    product: prisma_access
+detection:
+    selection:
+        reason: 'NEW_ALERT'
+        policyType: "attack_path"
+        severity:
+            - critical
+            - medium
+            - high
+            - low
+    condition: selection
+falsepositives:
+    - Unknown
+level: high

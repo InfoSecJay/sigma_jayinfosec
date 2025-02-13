@@ -1,0 +1,40 @@
+title: Prisma Cloud Network Alert
+id: 917af613-2170-45ca-8dff-5ba76147858b
+status: unsupported
+description: |
+    Detects Prisma Cloud Network alerts which are of critical, high, medium or low severity.
+    Prisma Cloud monitors network activity from AWS, Azure, and GCP.
+references:
+    - https://docs.prismacloud.io/en/enterprise-edition/content-collections/alerts/alerts
+    - https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/aws-networking-policies
+    - https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azure-networking-policies
+    - https://docs.prismacloud.io/en/enterprise-edition/policy-reference/google-cloud-policies/google-cloud-networking-policies/google-cloud-networking-policies
+author: Jay Tymchuk '@JayInfoSec'
+date: 2025-02-13
+tags:
+    - attack.initial-access
+    - attack.execution
+    - attack.persistence
+    - attack.defense-evasion
+    - attack.credential-access
+    - attack.discovery
+    - attack.lateral-movement
+    - attack.collection
+    - attack.exfiltration
+    - attack.impact
+logsource:
+    category: cloud
+    product: prisma_access
+detection:
+    selection:
+        reason: 'NEW_ALERT'
+        policyType: "network"
+        severity:
+            - critical
+            - medium
+            - high
+            - low
+    condition: selection
+falsepositives:
+    - Unknown
+level: high

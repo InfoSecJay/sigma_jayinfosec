@@ -7,7 +7,7 @@ references:
 author: @JayInfoSec
 date: 2024-08-20
 tags:
-    - 
+    - attack.collection
 logsource:
     category: cloud
     product: o365

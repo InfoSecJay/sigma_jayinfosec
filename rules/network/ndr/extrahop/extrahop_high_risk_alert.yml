@@ -1,0 +1,31 @@
+title: ExtraHop High Risk Alert
+id: 018155b1-94e8-4eba-906d-06b58fb3a2d5
+status: unsupported
+description: |
+    Detects any detection from ExtraHop Reveal(x) 360 Network Detection and Response (NDR) platform.
+    This rule specifically monitors any critical risk detection, identified by a risk score between 30 and 80.
+references:
+    - https://docs.extrahop.com/9.8/detections-overview/
+    - https://docs.extrahop.com/9.8/eh-system-user-guide/#alerts
+    - https://learn.extrahop.com/alerts-course
+    - https://docs.extrahop.com/9.8/detections-faq/#:~:text=Risk%20scores%20are%20grouped%20into,Yellow%20%3D%201%2D30
+author: Jay Tymchuk '@JayInfoSec'
+date: 2025-02-13
+tags:
+    - attack.execution
+    - attack.lateral-movement
+    - attack.persistence
+    - attack.command-and-control
+    - attack.discovery
+logsource:
+    product: extrahop
+detection:
+    risk_range1:
+        risk_score: ">= 31"              # greater than or equal to a risk score of 31 (between 31-79)
+    risk_range2:
+        risk_score: "<= 79"              # less than or equal to a risk score of 79 (between 31-79)
+    condition: risk_range1 and risk_range2
+falsepositives:
+    - Unlikely
+level: high
+

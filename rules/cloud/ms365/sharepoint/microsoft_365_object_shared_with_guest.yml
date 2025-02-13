@@ -4,7 +4,7 @@ status: experimental
 description: Detect when a user shares a Microsoft 365 Sharepoint document with a guest.
 references:
     - https://docs.datadoghq.com/security/default_rules/m365-sharepoint-shared-file-with-guest/
-author: '@JayInfoSec'
+author: Jay Tymchuk '@JayInfoSec'
 date: 2024-08-20
 tags:
     - attack.collection
