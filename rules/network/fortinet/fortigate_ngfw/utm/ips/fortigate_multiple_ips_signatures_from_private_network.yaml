@@ -1,5 +1,6 @@
 title: FortiGate UTM IPS Multiple Signatures from Private Network
 id: e25090c9-e376-4ee2-8d7f-8bb220a8d9e2
+name: fortigate_ips_signature_private
 status: experimental
 description: Detects multiple FortiGate NGFW UTM IPS multiple FortiGate UTM IPS attack signatures originating from a single source in the private network.
 references:
@@ -30,7 +31,7 @@ detection:
             - '10.0.0.0/8'
             - '172.16.0.0/12'
             - '192.168.0.0/16'
-    condition: selection | count(attack) by srcip > 5
+    condition: selection
 fields:
     - user
     - attack
@@ -41,3 +42,17 @@ fields:
 falsepositives:
     - Unknown.
 level: critical
+
+---
+title: Fortigate Multiple Ips Signatures From Private Network (Correlation)
+id: c82f301f-9a8b-4b9e-9876-4f0a0a37a38e
+correlation:
+    type: value_count
+    rules:
+        - fortigate_ips_signature_private
+    group-by:
+        - srcip
+    timespan: 10m
+    condition:
+        gt: 5
+        field: attack

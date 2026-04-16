@@ -1,5 +1,6 @@
 title: FortiGate UTM IPS Multiple Allowed Signatures from Public Network
 id: 4086323b-6662-456d-a2d3-731ceecf1a3e
+name: fortigate_ips_allowed_signature_public
 status: experimental
 description: Detects multiple FortiGate NGFW UTM IPS attack signatures originating from a single source from the public network.
 references:
@@ -32,7 +33,7 @@ detection:
             - '10.0.0.0/8'
             - '172.16.0.0/12'
             - '192.168.0.0/16'
-    condition: selection and not filter | count(attack) by srcip > 5
+    condition: selection and not filter
 fields:
     - user
     - attack
@@ -43,3 +44,17 @@ fields:
 falsepositives:
     - Unknown.
 level: critical
+
+---
+title: Fortigate Multiple Allowed Ips Signatures From Public Network (Correlation)
+id: 288eabab-01f2-4e83-ab87-b1911aa5faf8
+correlation:
+    type: value_count
+    rules:
+        - fortigate_ips_allowed_signature_public
+    group-by:
+        - srcip
+    timespan: 10m
+    condition:
+        gt: 5
+        field: attack

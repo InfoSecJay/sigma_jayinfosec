@@ -1,5 +1,5 @@
 title: FortiGate UTM Virus Signatures From Multiple Private Network Sources
-id: 20df04d2-f05s-4d55-98ea-cd91de71ea19
+id: 20df04d2-f05a-4d55-98ea-cd91de71ea19
 status: experimental
 description: Detects a FortiGate NGFW UTM Virus signature on multiple hosts in the private network which may indicate an infection on multiple devices.
 references:
@@ -26,7 +26,7 @@ detection:
             - '10.0.0.0/8'
             - '172.16.0.0/12'
             - '192.168.0.0/16'
-    condition: selection and not filter | count(src) by attack > 5
+    condition: selection
 fields:
     - user
     - attack
@@ -37,3 +37,17 @@ fields:
 falsepositives:
     - Unknown
 level: critical
+
+---
+title: Fortigate Utm Virus Signatures From Multiple Private Sources (Correlation)
+id: bfc68535-7643-428c-bc8f-f37cc1316640
+correlation:
+    type: value_count
+    rules:
+        - fortigate_virus_signatures_multi_private
+    group-by:
+        - attack
+    timespan: 10m
+    condition:
+        gt: 5
+        field: srcip
